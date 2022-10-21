@@ -1,0 +1,16 @@
+<!-- <div class="col-2 offset-10 col-lg-2 offset-lg-8 col-md-8 offset-md-2 col-sm-8 offset-sm-2 col-xs-10 offset-xs-1"
+    style="position: fixed; top: 20px;"> -->
+<div class="col-3 offset-6 col-xs-4 offset-xs-7 col-sm-4 offset-sm-7 col-md-4 offset-md-8 col-lg-4 offset-lg-9 col-xl-4 offset-xl-9"
+    style="position: fixed; top: 15px;">
+    <!-- <div style="width: 100%; position: fixed; text-align: center;"> -->
+    <div *ngFor=" let alert of alertService.alerts; let i=index" onclick="this.style.display='none'">
+        <button [class]="'btn btn-' + alert.alertType + ' my-1 shadow'">
+            <div>
+                <div style="float: left; width: 90%;">
+                    {{alert.alertText}}
+                </div>
+            </div>
+            <div style=" float: right; width: 10%;font-size: 150%; line-height: 80%;">&times;</div>
+        </button>
+    </div>
+</div>

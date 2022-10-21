@@ -1,0 +1,31 @@
+.left-nav {
+  position: absolute; top: 0px; left: 0px; width: 200px; height: 100vh; z-index: 0; padding-top: 65px;  overflow-y: auto;
+}
+
+/**** SCROLL BAR ****/
+
+::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background: #999;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    background: #ccc;
+    width: 4px;
+  }
+
+  ::-webkit-scrollbar-track-piece {
+    background: #212529;
+  }
+
+  ::-webkit-scrollbar-corner {
+    background: #212529;
+  }

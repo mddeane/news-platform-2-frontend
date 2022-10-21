@@ -1,0 +1,60 @@
+<div class="container">
+
+    <div class="row">
+        <form>
+            <div class="row mb-3">
+                <div class="col col-xs-12 col-sm-12 col-md-8 col-lg-6 col-xl-6 col-xxl-4">
+                    <label for="rundownTemplate" class="form-label">Rundown Template</label>
+                    <input [(ngModel)]="rundown.rundownTemplate" name="rundownTemplate" type="text" class="form-control"
+                        id="rundownTemplate">
+                </div>
+            </div>
+            <div class="row mb-3">
+                <div class="col col-xs-12 col-sm-12 col-md-8 col-lg-6 col-xl-6 col-xxl-4">
+                    <div class="form-check">
+                        <input [(ngModel)]="rundown.rundownStatus" name="activatedCheck" type="checkbox"
+                            class="form-check-input" id="activatedCheck">
+                        <label class="form-check-label" for="activatedCheck">Activated</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row mb-3">
+                <div class="col col-xs-12 col-sm-12 col-md-8 col-lg-6 col-xl-6 col-xxl-4">
+                    <label for="rundownTitle" class="form-label">Rundown Title</label>
+                    <input [(ngModel)]="rundown.rundownTitle" name="rundownTitle" type="text" class="form-control"
+                        id="rundownTitle">
+                </div>
+            </div>
+            <div class="row mb-3">
+                <div class="col col-xs-12 col-sm-6 col-md-4 col-lg-3 col-xl-3 col-xxl-2">
+                    <label for="rundownStartDate" class="form-label">Rundown Start Date</label>
+                    <input [(ngModel)]="rundownStartDate" name="rundownStartDate" type="date" class="form-control"
+                        id="rundownStartDate">
+                </div>
+                <div class="col col-xs-12 col-sm-6 col-md-4 col-lg-3 col-xl-3 col-xxl-2">
+                    <label for="rundownStartTime" class="form-label">Rundown Start Time</label>
+                    <input [(ngModel)]="rundownStartTime" name="rundownStartTime" type="time" step="2"
+                        class="form-control" id="rundownStartTime">
+                </div>
+            </div>
+            <div class="row mb-3">
+                <div class="col col-xs-12 col-sm-6 col-md-4 col-lg-3 col-xl-3 col-xxl-2">
+                    <label for="rundownEndDate" class="form-label">Rundown End Date</label>
+                    <input [(ngModel)]="rundownEndDate" name="rundownEndDate" type="date" class="form-control"
+                        id="rundownEndDate">
+                </div>
+                <div class="col col-xs-12 col-sm-6 col-md-4 col-lg-3 col-xl-3 col-xxl-2">
+                    <label for="rundownEndTime" class="form-label">Rundown End Time</label>
+                    <input [(ngModel)]="rundownEndTime" name="rundownEndTime" type="time" step="2" class="form-control"
+                        id="rundownEndTime">
+                </div>
+            </div>
+            <div class="row mb-3">
+                <div class="col">
+                    <button type="submit" (click)="submitRundown()" class="btn btn-primary">Submit</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
