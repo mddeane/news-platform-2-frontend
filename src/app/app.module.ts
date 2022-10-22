@@ -13,6 +13,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { CreateRundownComponent } from './create-rundown/create-rundown.component';
 import { AlertComponent } from './alert/alert.component';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { AlertComponent } from './alert/alert.component';
     StoryComponent,
     CreateRundownComponent,
     AlertComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
