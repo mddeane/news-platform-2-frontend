@@ -1,0 +1,65 @@
+.closeItem {
+    float: right; 
+    width: 10%;
+    font-size: 1.8em; 
+    line-height: 70%;
+}
+
+.closeItem:hover {
+    /* color: rgb(244, 147, 147); */
+    color: #ea868f;
+}
+
+.loadedRundownTitle {
+    float: left; 
+    width: 90%; 
+    cursor:pointer;
+}
+
+table {
+    table-layout: fixed;
+    width: auto;
+    background-color: white;
+}
+
+thead tr th {
+    font-size: 0.9em;
+    font-weight: normal;
+    white-space: nowrap;
+}
+
+.tb-page {
+   min-width: 35px;
+   width: auto;
+   white-space: nowrap;
+}
+
+.tb-title {
+    min-width: 250px;
+    width: auto;
+    white-space: nowrap;
+}
+
+.tb-segment {
+    min-width: 150px;
+    width: auto;
+    white-space: nowrap;
+}
+
+.tb-menu {
+    min-width: 25px;
+    width: auto;
+    white-space: nowrap;
+}
+
+.tb-approval {
+    min-width: 25px;
+    width: auto;
+    white-space: nowrap;
+}
+
+.rundown {
+    border: 1px solid #dee2e6;
+    padding-top: 10px;
+    background-color: white;
+}

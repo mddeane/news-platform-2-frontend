@@ -1,0 +1,7 @@
+.top-nav {
+    position: absolute; 
+    top: 0px; 
+    left: 0px; 
+    z-index: 0;
+    width: 100%;
+}

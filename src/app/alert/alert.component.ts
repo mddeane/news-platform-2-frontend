@@ -11,10 +11,10 @@ export class AlertComponent implements OnInit {
 
   alerts: Alert[] = [];
 
-  constructor(public alertService: AlertService) { }
+  constructor(public alertServ: AlertService) { }
 
   ngOnInit(): void {
-    this.alertService.showAlert("You are using the PLATFORM", "success", 30000);
+    // this.alertServ.showAlert("You are using the PLATFORM", "secondary", 30000);
   }
 
 }

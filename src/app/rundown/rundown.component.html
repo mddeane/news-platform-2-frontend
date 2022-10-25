@@ -1,5 +1,195 @@
-<div class="container">
+<div class="container-fluid">
+    <!-- button to get all rundowns -->
     <div class="row">
-        <p>Rundown</p>
+        <div class="col mb-3">
+            <button class="btn btn-primary" (click)="getAllRundowns()">Get All Rundowns</button>
+        </div>
     </div>
+
+    <!-- lists all rundowns retrieved -->
+    <div class="row" *ngIf="allRundowns.length > 0">
+        <div class="col mb-3">
+            <div class="list-group">
+                <button *ngFor="let rundown of allRundowns" type="button" class="list-group-item list-group-item-action"
+                    (click)="loadRundown(rundown.rundownId, rundown)"
+                    style="font-size: 0.8em;">{{rundown.rundownTitle}}</button>
+            </div>
+            <button class="btn btn-secondary mt-3" (click)="unloadAllRundowns()">Close Rundown
+                List</button>
+        </div>
+    </div>
+
+    <!-- Get Rundown by ID test -->
+    <!-- <div class="row">
+        <div class="col">
+            <div class="input-group mb-3">
+                <button class="btn btn-primary" type="button" id="getRundown"
+                    (click)="getRundownById(rundownToLoadId)">Get
+                    Rundown</button>
+                <input [(ngModel)]="rundownToLoadId" type=" text" class="form-control" placeholder=""
+                    aria-label="Get Rundown" aria-describedby="getRundown">
+            </div>
+        </div>
+    </div> -->
+
+    <!-- Displayed rundown -->
+    <!-- <div class="row">
+        <div class="col">
+            <div class="input-group mb-3">
+                <input [(ngModel)]="displayedRundown" type=" text" class="form-control" placeholder=""
+                    aria-label="Display Rundown" aria-describedby="displayRundown">
+            </div>
+        </div>
+    </div> -->
+
+    <!-- lists horizontally the rundowns that are lodaded -->
+    <!-- <div class="row">
+        <div class="col mb-3">
+            <ul class="list-group list-group-horizontal" style="font-size: 0.8em;">
+                <li *ngFor="let rundownId of loadedRundownIds; let i=index" class="list-group-item"
+                    [class]="rundownId==displayedRundown ? 'list-group-item-primary' : 'list-group-item-light'"
+                    (click)="setDisplayRundown(rundownId)">
+                    <div class="loadedRundownTitle">
+                        {{loadedRundowns[i].rundownTitle}}
+                    </div>
+                    <div class="closeItem ps-1">
+                        <span style="cursor:pointer" (click)="unloadRundown(i)">&times;</span>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div> -->
+
+    <div class="row">
+        <div class="col mb-3">
+            <button *ngFor="let rundownId of loadedRundownIds; let i=index" class="btn btn-sm me-2 mb-2 w-auto"
+                [class]="rundownId==displayedRundown ? 'btn-primary' : 'btn-secondary'"
+                (click)="setDisplayRundown(rundownId)" style="font-size: 0.8em; white-space: nowrap;">
+                <div class=" loadedRundownTitle">
+                    {{loadedRundowns[i].rundownTitle}}
+                </div>
+                <div class="closeItem ps-1">
+                    <span style="cursor:pointer" (click)="unloadRundown(i)">&times;</span>
+                </div>
+            </button>
+        </div>
+    </div>
+
+    <!-- The Rundown -->
+    <div class="row rundown" *ngFor="let rundown of loadedRundowns; let i = index"
+        [ngStyle]="{'display': displayedRundown == loadedRundowns[i].rundownId ? 'block' : 'none'}">
+        <h4>{{loadedRundowns[i].rundownTitle}}</h4>
+        <!-- <div *ngFor="let row of loadedRundowns[i].rundownRows">
+            <p>Row ID: {{row.rowId}}</p>
+            <p>Row Type: {{row.rowType}}</p>
+            <p>Row Created: {{row.rowCreatedDate}}</p> -->
+        <div style="overflow: auto;">
+            <!-- TABLE -->
+            <table class="table table-sm table-bordered table-striped">
+                <thead>
+                    <tr class="table-dark">
+                        <th scope="col">Row ID</th>
+                        <th scope="col" class="tb-menu"></th>
+                        <th scope="col" class="tb-approval"></th>
+                        <th scope="col" class="tb-page">Page</th>
+                        <th scope="col" class="tb-title">Title</th>
+                        <th scope="col" class="tb-segment">Segment</th>
+                        <th scope="col" class="tb-est">Est Dur</th>
+                        <th scope="col" class="tb-act">Act Dur</th>
+                        <th scope="col" class="tb-created-by">Created By</th>
+                        <th scope="col" class="tb-created-at">Created At</th>
+                        <th scope="col" class="tb-created-by">Modified By</th>
+                        <th scope="col" class="tb-created-at">Modified At</th>
+                        <th scope="col" class="tb-float">Float</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr (dblclick)="test()" *ngFor="let row of loadedRundowns[i].rundownRows">
+                        <td>{{row.rowId}}</td>
+                        <td></td>
+                        <td></td>
+                        <td contenteditable="true"></td>
+                        <td contenteditable="true"></td>
+                        <td contenteditable="true"></td>
+                        <td contenteditable="true"></td>
+                        <td></td>
+                        <td>{{row.rowCreatedBy}}</td>
+                        <td>{{row.rowCreatedDate}}</td>
+                        <td>{{row.rowModifiedBy}}</td>
+                        <td>{{row.rowModifiedDate}}</td>
+                        <td>
+                            <div>
+                                <input class="form-check-input" type="checkbox" id="checkboxNoLabel" name="" value=""
+                                    aria-label="...">
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <!-- </div> -->
+    </div>
+
+    <!-- <div style="overflow: auto;"> -->
+    <!-- TABLE -->
+    <!-- <table class="table table-sm table-bordered table-striped">
+            <thead>
+                <tr class="table-dark">
+                    <th scope="col" class="tb-menu"></th>
+                    <th scope="col" class="tb-approval"></th>
+                    <th scope="col" class="tb-page">Page</th>
+                    <th scope="col" class="tb-title">Title</th>
+                    <th scope="col" class="tb-segment">Segment</th>
+                    <th scope="col" class="tb-est">Est Dur</th>
+                    <th scope="col" class="tb-act">Act Dur</th>
+                    <th scope="col" class="tb-created-by">Created By</th>
+                    <th scope="col" class="tb-created-at">Created At</th>
+                    <th scope="col" class="tb-created-by">Modified By</th>
+                    <th scope="col" class="tb-created-at">Modified At</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr (dblclick)="test()">
+                    <td></td>
+                    <td></td>
+                    <td contenteditable="true">A1</td>
+                    <td contenteditable="true">STORY TITLE</td>
+                    <td contenteditable="true">INTRO VO</td>
+                    <td contenteditable="true">0:00</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td contenteditable="true"></td>
+                    <td contenteditable="true"></td>
+                    <td contenteditable="true"></td>
+                    <td contenteditable="true"></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td contenteditable="true"></td>
+                    <td contenteditable="true"></td>
+                    <td contenteditable="true"></td>
+                    <td contenteditable="true"></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            </tbody>
+        </table>
+    </div> -->
+
 </div>

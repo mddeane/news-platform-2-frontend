@@ -1,12 +1,24 @@
-<div class="container">
+<div class="container-fluid">
 
     <div class="row">
         <form>
             <div class="row mb-3">
                 <div class="col col-xs-12 col-sm-12 col-md-8 col-lg-6 col-xl-6 col-xxl-4">
-                    <label for="rundownTemplate" class="form-label">Rundown Template</label>
-                    <input [(ngModel)]="rundown.rundownTemplate" name="rundownTemplate" type="text" class="form-control"
-                        id="rundownTemplate">
+                    <div class="form-group">
+                        <h1 class="h3 mb-3 font-weight-normal">Create Rundown</h1>
+
+                        <label for="rundownTemplate" class="form-label">Rundown Template</label>
+                        <select [(ngModel)]="rundown.rundownTemplate" class="form-select"
+                            aria-label="Default select example" id="rundownTemplate" name="rundownTemplate"
+                            (change)="rundown.rundownTitle=prepRundownTitle(rundown.rundownTemplate, rundownStartDate)">
+                            <option *ngFor="let template of TEMP_RUNDOWN_TEMPLATES; let i = index">
+                                {{template}}</option>
+                        </select>
+                    </div>
+                    <!-- <input [(ngModel)]="rundown.rundownTemplate" name="rundownTemplate" type="text" class="form-control"
+                        id="rundownTemplate"> -->
+
+
                 </div>
             </div>
             <div class="row mb-3">
@@ -30,12 +42,14 @@
                 <div class="col col-xs-12 col-sm-6 col-md-4 col-lg-3 col-xl-3 col-xxl-2">
                     <label for="rundownStartDate" class="form-label">Rundown Start Date</label>
                     <input [(ngModel)]="rundownStartDate" name="rundownStartDate" type="date" class="form-control"
-                        id="rundownStartDate">
+                        id="rundownStartDate"
+                        (change)="rundown.rundownTitle =prepRundownTitle(rundown.rundownTemplate,rundownStartDate); calculateEndDateAndTime(convertStringToDate(rundownStartDate, rundownStartTime),convertStringToDate(rundownStartDate, rundownStartTime), 30)">
                 </div>
                 <div class="col col-xs-12 col-sm-6 col-md-4 col-lg-3 col-xl-3 col-xxl-2">
                     <label for="rundownStartTime" class="form-label">Rundown Start Time</label>
                     <input [(ngModel)]="rundownStartTime" name="rundownStartTime" type="time" step="2"
-                        class="form-control" id="rundownStartTime">
+                        class="form-control" id="rundownStartTime"
+                        (change)="calculateEndDateAndTime(convertStringToDate(rundownStartDate, rundownStartTime),convertStringToDate(rundownStartDate, rundownStartTime), 30)">
                 </div>
             </div>
             <div class="row mb-3">

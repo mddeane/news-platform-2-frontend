@@ -14,6 +14,7 @@ import { FormsModule } from '@angular/forms';
 import { CreateRundownComponent } from './create-rundown/create-rundown.component';
 import { AlertComponent } from './alert/alert.component';
 import { LoginComponent } from './login/login.component';
+import { RightMainComponent } from './right-main/right-main.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { LoginComponent } from './login/login.component';
     CreateRundownComponent,
     AlertComponent,
     LoginComponent,
+    RightMainComponent,
   ],
   imports: [
     BrowserModule,
